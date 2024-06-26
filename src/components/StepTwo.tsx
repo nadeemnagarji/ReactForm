@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { addressInfoSchema } from "../schema";
+import { motion } from "framer-motion";
 
 export type AddressInfoFormData = z.infer<typeof addressInfoSchema>;
 
@@ -39,16 +40,24 @@ const AddressInfo: React.FC<AddressInfoProps> = ({
       className="max-w-sm mx-auto px-4 pb-4 shadow-lg rounded-md"
       onSubmit={handleSubmit(onSubmitHandler)}
     >
-      <h2 className="text-2xl font-semibold mb-8 text-gray-900 dark:text-gray-200">
+      <motion.h2
+        initial={{ opacity: "0", y: 20 }}
+        animate={{ opacity: "100%", y: 0 }}
+        transition={{ ease: [0.33, 1, 0.68, 1], duration: 0.3, delay: 0.3 }}
+        className="text-2xl font-semibold mb-8 text-gray-900 dark:text-gray-200"
+      >
         Step 2: Address Information
-      </h2>
+      </motion.h2>
       <div className="mb-5 flex flex-col justify-center items-center">
-        <label
+        <motion.label
+          initial={{ opacity: "0", y: 20 }}
+          animate={{ opacity: "100%", y: 0 }}
+          transition={{ ease: [0.33, 1, 0.68, 1], duration: 0.3, delay: 0.6 }}
           htmlFor="addressLine1"
           className="self-start block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           Address Line 1
-        </label>
+        </motion.label>
         <input
           id="addressLine1"
           {...register("addressLine1")}
@@ -59,12 +68,15 @@ const AddressInfo: React.FC<AddressInfoProps> = ({
         )}
       </div>
       <div className="mb-5 flex flex-col justify-center items-center">
-        <label
+        <motion.label
+          initial={{ opacity: "0", y: 20 }}
+          animate={{ opacity: "100%", y: 0 }}
+          transition={{ ease: [0.33, 1, 0.68, 1], duration: 0.3, delay: 0.7 }}
           htmlFor="addressLine2"
           className="block self-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           Address Line 2
-        </label>
+        </motion.label>
         <input
           id="addressLine2"
           {...register("addressLine2")}
@@ -72,12 +84,15 @@ const AddressInfo: React.FC<AddressInfoProps> = ({
         />
       </div>
       <div className="mb-5 flex flex-col justify-center items-center">
-        <label
+        <motion.label
+          initial={{ opacity: "0", y: 20 }}
+          animate={{ opacity: "100%", y: 0 }}
+          transition={{ ease: [0.33, 1, 0.68, 1], duration: 0.3, delay: 0.8 }}
           htmlFor="city"
           className="block self-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           City
-        </label>
+        </motion.label>
         <input
           id="city"
           {...register("city")}
@@ -88,12 +103,15 @@ const AddressInfo: React.FC<AddressInfoProps> = ({
         )}
       </div>
       <div className="mb-5 flex flex-col justify-center items-center">
-        <label
+        <motion.label
+          initial={{ opacity: "0", y: 20 }}
+          animate={{ opacity: "100%", y: 0 }}
+          transition={{ ease: [0.33, 1, 0.68, 1], duration: 0.3, delay: 0.9 }}
           htmlFor="state"
           className="block self-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           State
-        </label>
+        </motion.label>
         <input
           id="state"
           {...register("state")}
@@ -104,12 +122,15 @@ const AddressInfo: React.FC<AddressInfoProps> = ({
         )}
       </div>
       <div className="mb-5 flex flex-col justify-center items-center">
-        <label
+        <motion.label
+          initial={{ opacity: "0", y: 20 }}
+          animate={{ opacity: "100%", y: 0 }}
+          transition={{ ease: [0.33, 1, 0.68, 1], duration: 0.3, delay: 1 }}
           htmlFor="zipCode"
           className="block self-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           Zip Code
-        </label>
+        </motion.label>
         <input
           id="zipCode"
           {...register("zipCode")}
@@ -120,19 +141,29 @@ const AddressInfo: React.FC<AddressInfoProps> = ({
         )}
       </div>
       <div className="flex justify-between">
-        <button
+        <motion.button
+          initial={{ opacity: "0", y: 20 }}
+          animate={{ opacity: "100%", y: 0 }}
+          transition={{ ease: [0.33, 1, 0.68, 1], duration: 0.3, delay: 0.9 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           type="button"
           onClick={onPrev}
           className="bg-gray-600 text-white py-2 px-4 rounded"
         >
           Prev
-        </button>
-        <button
+        </motion.button>
+        <motion.button
+          initial={{ opacity: "0", y: 20 }}
+          animate={{ opacity: "100%", y: 0 }}
+          transition={{ ease: [0.33, 1, 0.68, 1], duration: 0.3, delay: 0.9 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           type="submit"
           className="bg-blue-600 text-white py-2 px-4 rounded"
         >
           Next
-        </button>
+        </motion.button>
       </div>
     </form>
   );
