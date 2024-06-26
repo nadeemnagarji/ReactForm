@@ -36,7 +36,7 @@ const AddressInfo: React.FC<AddressInfoProps> = ({
 
   return (
     <form
-      className="max-w-sm mx-auto px-4 pb-4"
+      className="max-w-sm mx-auto px-4 pb-4 shadow-lg rounded-md"
       onSubmit={handleSubmit(onSubmitHandler)}
     >
       <h2 className="text-2xl font-semibold mb-8 text-gray-900 dark:text-gray-200">

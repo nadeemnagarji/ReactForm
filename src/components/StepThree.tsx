@@ -22,7 +22,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({
   //console.log(isSubmitting);
 
   return (
-    <div className="max-w-sm mx-auto px-4 space-y-8">
+    <div className="max-w-sm mx-auto px-4 space-y-8 py-4 shadow-lg rounded-md">
       <h2 className="text-2xl font-semibold mb-8 text-gray-900 dark:text-gray-200 ">
         Step 3: Confirmation
       </h2>
