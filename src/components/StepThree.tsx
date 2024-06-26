@@ -24,7 +24,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({
   return (
     <div className="max-w-sm mx-auto px-4 space-y-8 py-4 shadow-lg rounded-md">
       <h2 className="text-2xl font-semibold mb-8 text-gray-900 dark:text-gray-200 ">
-        Step 3: Confirmation
+        Confirmation
       </h2>
       <div className="confirmation-details space-y-4">
         <div className="flex justify-between">

@@ -46,7 +46,7 @@ const AddressInfo: React.FC<AddressInfoProps> = ({
         transition={{ ease: [0.33, 1, 0.68, 1], duration: 0.3, delay: 0.3 }}
         className="text-2xl font-semibold mb-8 text-gray-900 dark:text-gray-200"
       >
-        Step 2: Address Information
+        Address Information
       </motion.h2>
       <div className="mb-5 flex flex-col justify-center items-center">
         <motion.label
