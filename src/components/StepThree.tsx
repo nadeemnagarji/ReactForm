@@ -1,24 +1,31 @@
-import React from "react";
+import { PersonalInfoFormData } from "./StepOne";
+import { AddressInfoFormData } from "./StepTwo";
+
+export type combinedFormData = PersonalInfoFormData & AddressInfoFormData;
 
 interface ConfirmationProps {
-  data: any;
+  data: combinedFormData;
   onPrev: () => void;
   onSubmit: () => void;
+  isSubmitting: boolean;
 }
 
 const Confirmation: React.FC<ConfirmationProps> = ({
   data,
   onPrev,
   onSubmit,
+  isSubmitting,
 }) => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     onSubmit();
   };
+  console.log(isSubmitting);
 
   return (
     <div className="max-w-sm mx-auto px-4 space-y-8">
-      <h2 className="text-2xl font-semibold mb-8">Step 3: Confirmation</h2>
+      <h2 className="text-2xl font-semibold mb-8 text-gray-900 dark:text-gray-200 ">
+        Step 3: Confirmation
+      </h2>
       <div className="confirmation-details space-y-4">
         <div className="flex justify-between">
           <strong className="text-gray-700 dark:text-white">Name:</strong>
@@ -70,8 +77,13 @@ const Confirmation: React.FC<ConfirmationProps> = ({
           Prev
         </button>
         <button
+          disabled={isSubmitting ? true : false}
           onClick={handleSubmit}
-          className="bg-green-600 text-white py-2 px-4 rounded"
+          className={
+            !isSubmitting
+              ? `bg-green-600 text-white py-2 px-4 rounded`
+              : `bg-slate-400 text-black py-2 px-4 rounded`
+          }
         >
           Submit
         </button>

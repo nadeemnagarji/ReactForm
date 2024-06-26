@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { addressInfoSchema } from "../schema";
 
-type AddressInfoFormData = z.infer<typeof addressInfoSchema>;
+export type AddressInfoFormData = z.infer<typeof addressInfoSchema>;
 
 interface AddressInfoProps {
   onSubmit: (data: AddressInfoFormData) => void;
@@ -36,10 +36,10 @@ const AddressInfo: React.FC<AddressInfoProps> = ({
 
   return (
     <form
-      className="max-w-sm mx-auto px-4"
+      className="max-w-sm mx-auto px-4 pb-4"
       onSubmit={handleSubmit(onSubmitHandler)}
     >
-      <h2 className="text-2xl font-semibold mb-8">
+      <h2 className="text-2xl font-semibold mb-8 text-gray-900 dark:text-gray-200">
         Step 2: Address Information
       </h2>
       <div className="mb-5 flex flex-col justify-center items-center">

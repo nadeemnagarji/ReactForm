@@ -5,6 +5,9 @@ import { ThemeProvider } from "./context/ThemeContext";
 import PersonalInfo from "./components/StepOne";
 import AddressInfo from "./components/StepTwo";
 import Confirmation from "./components/StepThree";
+import toast, { Toaster } from "react-hot-toast";
+import { PersonalInfoFormData } from "./components/StepOne";
+import { AddressInfoFormData } from "./components/StepTwo";
 
 function App() {
   const [formData, setFormData] = useState<any>(() => {
@@ -12,29 +15,47 @@ function App() {
     return savedData ? JSON.parse(savedData) : {};
   });
   const [currentStep, setCurrentStep] = useState<number>(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("formData", JSON.stringify(formData));
   }, [formData]);
 
-  const handlePersonalInfoSubmit = (data: any) => {
+  const handlePersonalInfoSubmit = (data: PersonalInfoFormData) => {
     setFormData({ ...formData, ...data });
     setCurrentStep(2);
   };
 
-  const handleAddressInfoSubmit = (data: any) => {
+  const handleAddressInfoSubmit = (data: AddressInfoFormData) => {
     setFormData({ ...formData, ...data });
     setCurrentStep(3);
   };
+  console.log(formData);
 
-  const handleConfirmationSubmit = () => {
+  const handleConfirmationSubmit = async () => {
+    if (!Object.keys(formData).length) {
+      toast.error("please fill the form");
+      return;
+    }
+    setIsSubmitting(true);
     console.log("Form submitted:", formData);
+    try {
+      setTimeout(() => {
+        console.log("sent data to backend");
+        toast.success("Form Submitted Succesfully");
+        setFormData({});
+        setIsSubmitting(false);
+      }, 1000);
+    } catch (error) {
+      toast.error("something went wrong");
+    }
+
     // Optionally clear localStorage
-    localStorage.removeItem("formData");
   };
 
   return (
     <ThemeProvider>
+      <Toaster />
       <FormLayout>
         {currentStep === 1 && (
           <PersonalInfo
@@ -57,6 +78,7 @@ function App() {
             data={formData}
             onPrev={() => setCurrentStep(2)}
             onSubmit={handleConfirmationSubmit}
+            isSubmitting={isSubmitting}
           />
         )}
       </FormLayout>

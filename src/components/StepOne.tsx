@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { personalInfoSchema } from "../schema";
 
-type PersonalInfoFormData = z.infer<typeof personalInfoSchema>;
+export type PersonalInfoFormData = z.infer<typeof personalInfoSchema>;
 
 interface PersonalInfoProps {
-  onSubmit: (data: any) => void;
+  onSubmit: (data: PersonalInfoFormData) => void;
   onNext: () => void;
   defaultValues: PersonalInfoFormData;
 }
@@ -27,17 +27,17 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({
   });
   console.log(defaultValues);
 
-  const onSubmitHandler = (data) => {
+  const onSubmitHandler = (data: PersonalInfoFormData) => {
     onSubmit(data);
     onNext();
   };
 
   return (
     <form
-      className="max-w-sm mx-auto px-4"
+      className="max-w-sm mx-auto px-4 shadow-xl"
       onSubmit={handleSubmit(onSubmitHandler)}
     >
-      <h2 className="text-2xl font-semibold mb-8">
+      <h2 className="text-2xl text-gray-900 dark:text-gray-200 font-semibold mb-8">
         Step 1: Personal Information
       </h2>
       <div className="mb-5 flex flex-col justify-center items-center">
@@ -50,7 +50,7 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({
         <input
           id="name"
           {...register("name")}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500  dark:focus:border-blue-500 focus:border-blue-500"
         />
         {errors.name && (
           <span className="text-red-500">{errors.name.message}</span>
@@ -91,7 +91,7 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({
       <div className="flex justify-end">
         <button
           type="submit"
-          className="bg-blue-600 text-white py-2 px-4 rounded"
+          className="bg-blue-600 text-white py-2 px-4 rounded mb-2"
         >
           Next
         </button>
