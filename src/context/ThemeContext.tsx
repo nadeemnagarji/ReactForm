@@ -1,10 +1,4 @@
-import {
-  Children,
-  ReactNode,
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 
 type Theme = "light" | "dark";
 
