@@ -18,5 +18,6 @@ export const addressInfoSchema = z.object({
   state: z.string().min(1, { message: "State is required" }),
   zipCode: z
     .string()
+    .length(6, "zipcode must be of 6 characters")
     .regex(/^\d+$/, { message: "zipcode must  contain only numbers" }),
 });
