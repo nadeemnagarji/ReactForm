@@ -25,7 +25,7 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({
     resolver: zodResolver(personalInfoSchema),
     defaultValues,
   });
-  console.log(defaultValues);
+  // console.log(defaultValues);
 
   const onSubmitHandler = (data: PersonalInfoFormData) => {
     onSubmit(data);

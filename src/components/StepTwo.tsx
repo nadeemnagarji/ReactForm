@@ -27,7 +27,7 @@ const AddressInfo: React.FC<AddressInfoProps> = ({
     resolver: zodResolver(addressInfoSchema),
     defaultValues,
   });
-  console.log(defaultValues);
+  //console.log(defaultValues);
 
   const onSubmitHandler = (data: AddressInfoFormData) => {
     onSubmit(data);

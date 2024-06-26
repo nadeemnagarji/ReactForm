@@ -19,7 +19,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({
   const handleSubmit = () => {
     onSubmit();
   };
-  console.log(isSubmitting);
+  //console.log(isSubmitting);
 
   return (
     <div className="max-w-sm mx-auto px-4 space-y-8">
