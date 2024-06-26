@@ -7,7 +7,8 @@ export const personalInfoSchema = z.object({
   email: z.string().email("Invalid email format"),
   phone: z
     .string()
-    .min(10, { message: "Phone number must be at least 10 characters long" }),
+    .min(10, { message: "Phone number must be at least 10 characters long" })
+    .regex(/^\d+$/, { message: "Phone number must contain only numbers" }),
 });
 
 export const addressInfoSchema = z.object({
@@ -15,5 +16,7 @@ export const addressInfoSchema = z.object({
   addressLine2: z.string().optional(),
   city: z.string().min(1, { message: "City is required" }),
   state: z.string().min(1, { message: "State is required" }),
-  zipCode: z.string(),
+  zipCode: z
+    .string()
+    .regex(/^\d+$/, { message: "zipcode must  contain only numbers" }),
 });
